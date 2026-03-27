@@ -1,0 +1,604 @@
+llll/* CodingResultPage Component Styles - Matching Admin Design */
+.admin-dashboard-wrapper {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
+  color: #ffffff;
+}
+
+.admin-dashboard-container {
+  padding: 0 2rem;
+}
+
+.admin-dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.admin-nav {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-nav .nav-link {
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.admin-nav .nav-link:hover {
+  background: rgba(244, 120, 10, 0.2);
+  border-color: rgba(244, 120, 10, 0.5);
+  color: #F4780A;
+  transform: translateY(-2px);
+}
+
+.admin-nav .nav-link.active {
+  background: rgba(244, 120, 10, 0.3);
+  border-color: #F4780A;
+  color: #F4780A;
+  font-weight: 600;
+}
+
+.admin-nav .nav-link .me-2 {
+  margin-right: 0.5rem;
+}
+
+.coding-result-page {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
+  color: #ffffff;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #b8c5d6;
+  margin: 0;
+}
+
+.admin-stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color: #ffffff;
+  height: 160px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(244, 120, 10, 0.3);
+  border-color: #F4780A;
+}
+
+.admin-stat-card .card-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.admin-stat-card h3 {
+  color: #F4780A;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 2rem;
+}
+
+.admin-stat-card p {
+  color: #b8c5d6;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.admin-content-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.admin-content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(244, 120, 10, 0.2);
+  border-color: #F4780A;
+}
+
+.admin-content-card .card-header {
+  background: rgba(244, 120, 10, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px 15px 0 0;
+  padding: 1rem 1.5rem;
+}
+
+.admin-content-card .card-header h5 {
+  color: #F4780A;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-content-card .card-body {
+  padding: 1.5rem;
+}
+
+.admin-result-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-result-controls .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.admin-result-controls .form-control:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #F4780A;
+  box-shadow: 0 0 0 0.2rem rgba(244, 120, 10, 0.25);
+  color: #ffffff;
+}
+
+.admin-result-controls .form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.admin-result-controls .form-select:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #F4780A;
+  box-shadow: 0 0 0 0.2rem rgba(244, 120, 10, 0.25);
+  color: #ffffff;
+}
+
+.admin-result-controls .btn-outline-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.admin-result-controls .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #F4780A;
+  color: #F4780A;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Table Styles */
+.table {
+  color: #ffffff;
+}
+
+.table thead th {
+  background: rgba(244, 120, 10, 0.2);
+  border-bottom: 2px solid #F4780A;
+  color: #F4780A;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background: rgba(244, 120, 10, 0.1);
+  transform: scale(1.01);
+}
+
+.table tbody td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  vertical-align: middle;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.action-buttons .btn {
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  padding: 0.4rem 0.6rem;
+  font-weight: 600;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make buttons more visible with solid colors */
+.action-buttons .btn-outline-primary {
+  background: #007bff;
+  border-color: #007bff;
+  color: #ffffff;
+}
+
+.action-buttons .btn-outline-success {
+  background: #28a745;
+  border-color: #28a745;
+  color: #ffffff;
+}
+
+.action-buttons .btn-outline-info {
+  background: #17a2b8;
+  border-color: #17a2b8;
+  color: #ffffff;
+}
+
+.action-buttons .btn-outline-danger {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff;
+}
+
+/* Enhanced hover effects */
+.action-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+}
+
+.action-buttons .btn-outline-primary:hover {
+  background: #0056b3;
+  border-color: #0056b3;
+}
+
+.action-buttons .btn-outline-success:hover {
+  background: #1e7e34;
+  border-color: #1e7e34;
+}
+
+.action-buttons .btn-outline-info:hover {
+  background: #117a8b;
+  border-color: #117a8b;
+}
+
+.action-buttons .btn-outline-danger:hover {
+  background: #c82333;
+  border-color: #c82333;
+}
+
+/* Modal Styles */
+.modal-content {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: #ffffff;
+}
+
+.modal-header {
+  background: rgba(244, 120, 10, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px 15px 0 0;
+}
+
+.modal-title {
+  color: #F4780A;
+  font-weight: 600;
+}
+
+.modal-body {
+  background: transparent;
+}
+
+.modal-footer {
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 15px 15px;
+}
+
+/* Form Controls in Modal */
+.modal .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.modal .form-control:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #F4780A;
+  box-shadow: 0 0 0 0.2rem rgba(244, 120, 10, 0.25);
+  color: #ffffff;
+}
+
+.modal .form-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.modal .form-select:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #F4780A;
+  box-shadow: 0 0 0 0.2rem rgba(244, 120, 10, 0.25);
+  color: #ffffff;
+}
+
+.modal .form-label {
+  color: #F4780A;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Code Display */
+.code-display {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+
+.code-display pre {
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Badge Styles */
+.badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+
+/* Spinner */
+.spinner-border {
+  color: #F4780A;
+}
+
+/* Chart Container */
+.recharts-wrapper {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* Code Cards */
+.code-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.code-card .card-header {
+  background: rgba(244, 120, 10, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px 8px 0 0;
+  padding: 0.75rem 1rem;
+}
+
+.code-card .card-header strong {
+  color: #F4780A;
+  font-weight: 600;
+}
+
+.code-card .card-body {
+  background: transparent;
+  padding: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-dashboard-wrapper {
+    padding: 1rem 0;
+  }
+  
+  .admin-dashboard-container {
+    padding: 0 1rem;
+  }
+  
+  .admin-nav {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .admin-result-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .admin-result-controls > div {
+    margin-bottom: 0.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+  
+  .action-buttons .btn {
+    min-width: 32px;
+    margin-bottom: 0;
+  }
+  
+  .table {
+    font-size: 0.85rem;
+  }
+  
+  .table thead th,
+  .table tbody td {
+    padding: 8px 6px;
+  }
+  
+  /* Ensure action buttons stay on one line even on small screens */
+  .table td:nth-child(7) {
+    min-width: 200px;
+    white-space: nowrap;
+  }
+  
+  .action-buttons {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}
+
+/* Pagination Controls */
+.results-pagination-controls {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.results-pagination-controls .pagination-info span {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.results-pagination-controls .pagination {
+  gap: 0.35rem;
+}
+
+.results-pagination-controls .page-link {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-radius: 8px;
+  min-width: 42px;
+  text-align: center;
+}
+
+.results-pagination-controls .page-link:hover {
+  background: rgba(244, 120, 10, 0.18);
+  border-color: rgba(244, 120, 10, 0.55);
+  color: #ffffff;
+}
+
+.results-pagination-controls .page-item.active .page-link {
+  background: linear-gradient(135deg, #F4780A, #e56909);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.results-pagination-controls .page-item.disabled .page-link {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Loading State */
+.text-center .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3em;
+}
+
+/* Empty State */
+.text-center.py-4 p {
+  color: #b8c5d6;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Button Hover Effects */
+.btn {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+  background: #F4780A;
+  border-color: #F4780A;
+}
+
+.btn-primary:hover {
+  background: #e56909;
+  border-color: #e56909;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}

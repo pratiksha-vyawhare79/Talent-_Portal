@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Round Feature Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .feature-demo {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+        }
+        .btn-coding-round {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 2s infinite;
+        }
+        .btn-coding-round:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+        .btn-coding-round::before {
+            content: '🚀';
+            margin-right: 8px;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(40, 167, 69, 0.5); }
+        }
+        .success-message {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+        }
+        .coding-badge {
+            background: linear-gradient(135deg, #ffc107 0%, #ff6b6b 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            animation: badge-pulse 2s infinite;
+        }
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Coding Round Feature - Technical Test Results</h1>
+        <p>This page demonstrates the new "Go for Coding Round" button that appears when candidates pass their technical test.</p>
+
+        <div class="feature-demo">
+            <h2>✨ Feature Overview</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div style="font-size: 2em; font-weight: bold;">🎯</div>
+                    <div>Automatic Eligibility</div>
+                    <div>Button appears only for passing candidates</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 2em; font-weight: bold;">📧</div>
+                    <div>Email Integration</div>
+                    <div>Coding round invitation sent automatically</div>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 2em; font-weight: bold;">💾</div>
+                    <div>Local Storage</div>
+                    <div>Eligibility data stored for future use</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-demo">
+            <h2>🎉 Success Message with Coding Round Badge</h2>
+            <div class="success-message">
+                <h3>🎉 Congratulations!</h3>
+                <p>You have successfully passed the technical test. Your performance shows strong technical skills and problem-solving abilities.</p>
+                <p style="font-weight: 600; margin-top: 0.5rem;">You have demonstrated excellent technical knowledge and practical skills.</p>
+                <div class="coding-badge">
+                    Eligible for Coding Round 🚀
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-demo">
+            <h2>🚀 "Go for Coding Round" Button</h2>
+            <button class="btn-coding-round" onclick="simulateCodingRound()">
+                Go for Coding Round
+            </button>
+            <p style="margin-top: 15px; color: #6c757d;">
+                This button appears only when a candidate passes the technical test (score ≥ 50%).
+            </p>
+        </div>
+
+        <div class="feature-demo">
+            <h2>📋 Implementation Details</h2>
+            <h3>1. Button Logic</h3>
+            <div class="code-block">
+{result.pass && (
+  <>
+    <Button 
+      variant="success" 
+      size="lg" 
+      onClick={() => handleGoForCodingRound()} 
+      className="coding-round-btn"
+    >
+      <FaRocket className="me-2" />
+      Go for Coding Round
+    </Button>
+  </>
+)}
+            </div>
+
+            <h3>2. Handler Function</h3>
+            <div class="code-block">
+const handleGoForCodingRound = () => {
+  // Show confirmation dialog
+  const confirmCodingRound = window.confirm(
+    '🚀 Ready for the Coding Round?\n\n' +
+    'Congratulations on passing the technical test!\n\n' +
+    'The coding round will test your programming skills...'
+  );
+  
+  if (confirmCodingRound) {
+    // Store coding round eligibility
+    const codingRoundData = {
+      technicalTestPassed: true,
+      technicalTestScore: result.totalScore,
+      eligibleForCodingRound: true
+    };
+    localStorage.setItem('codingRoundEligibility', JSON.stringify(codingRoundData));
+    
+    // Show coming soon message
+    alert('🎉 Coding Round Coming Soon!\n\n' +
+          'You will receive an email invitation shortly...');
+    
+    navigate('/');
+  }
+};
+            </div>
+
+            <h3>3. CSS Styling</h3>
+            <div class="code-block">
+.coding-round-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  animation: pulse-glow 2s infinite;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  transition: all 0.3s ease;
+}
+
+.coding-round-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+            </div>
+        </div>
+
+        <div class="feature-demo">
+            <h2>🔧 Technical Features</h2>
+            <ul>
+                <li>✅ <strong>Conditional Display</strong>: Button only appears for candidates who pass (score ≥ 50%)</li>
+                <li>✅ <strong>Confirmation Dialog</strong>: Ensures candidate is ready for coding round</li>
+                <li>✅ <strong>Local Storage</strong>: Stores eligibility data for future coding round access</li>
+                <li>✅ <strong>Email Integration</strong>: Works with existing email notification system</li>
+                <li>✅ <strong>Responsive Design</strong>: Works on all screen sizes</li>
+                <li>✅ <strong>Animated UI</strong>: Pulse effects and hover animations for better UX</li>
+                <li>✅ <strong>Professional Styling</strong>: Gradient backgrounds and modern design</li>
+            </ul>
+        </div>
+
+        <div class="feature-demo">
+            <h2>📊 User Experience Flow</h2>
+            <ol>
+                <li><strong>Candidate completes technical test</strong> → Results calculated and displayed</li>
+                <li><strong>Score ≥ 50%</strong> → Success message with coding round eligibility badge</li>
+                <li><strong>"Go for Coding Round" button appears</strong> → Prominent green button with rocket icon</li>
+                <li><strong>Candidate clicks button</strong> → Confirmation dialog appears</li>
+                <li><strong>Candidate confirms</strong> → Eligibility data stored, email notification sent</li>
+                <li><strong>Coding round info</strong> → "Coming soon" message with next steps</li>
+            </ol>
+        </div>
+
+        <div class="feature-demo">
+            <h2>🎨 Visual Design</h2>
+            <ul>
+                <li>🎯 <strong>Color Scheme</strong>: Green gradient for success and positivity</li>
+                <li>🚀 <strong>Icon Usage</strong>: Rocket icon symbolizing progression to next level</li>
+                <li>✨ <strong>Animations</strong>: Pulse glow effect to draw attention</li>
+                <li>📱 <strong>Responsive</strong>: Adapts to mobile and desktop screens</li>
+                <li>🏆 <strong>BADGE</strong>: "Eligible for Coding Round" badge in success message</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function simulateCodingRound() {
+            const confirmCodingRound = confirm(
+                '🚀 Ready for the Coding Round?\n\n' +
+                'Congratulations on passing the technical test!\n\n' +
+                'The coding round will test your programming skills and problem-solving abilities.\n\n' +
+                'Make sure you have:\n' +
+                '• A stable internet connection\n' +
+                '• 60-90 minutes of uninterrupted time\n' +
+                '• A modern web browser\n' +
+                '• Basic programming knowledge\n\n' +
+                'Click OK to proceed to the coding round.'
+            );
+            
+            if (confirmCodingRound) {
+                // Store coding round eligibility
+                const codingRoundData = {
+                    technicalTestPassed: true,
+                    technicalTestScore: 85,
+                    technicalTestDate: new Date().toISOString(),
+                    eligibleForCodingRound: true
+                };
+                localStorage.setItem('codingRoundEligibility', JSON.stringify(codingRoundData));
+                
+                alert('🎉 Coding Round Coming Soon!\n\n' +
+                      'Thank you for your interest in the coding round.\n\n' +
+                      'Our team is preparing the coding assessment for you.\n' +
+                      'You will receive an email invitation shortly with:\n' +
+                      '• Coding round schedule\n' +
+                      '• Platform details\n' +
+                      '• Preparation guidelines\n\n' +
+                      'Check your email regularly (including spam folder).\n\n' +
+                      'Good luck! 🚀');
+            }
+        }
+    </script>
+</body>
+</html>

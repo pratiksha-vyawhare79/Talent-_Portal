@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Technical Results API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        .result { margin: 10px 0; padding: 10px; background: #f5f5f5; }
+        .error { background: #ffe6e6; color: #cc0000; }
+        .success { background: #e6ffe6; color: #006600; }
+    </style>
+</head>
+<body>
+    <h1>Technical Results API Test</h1>
+    
+    <div class="test-section">
+        <h3>1. Test Save Result</h3>
+        <button onclick="testSaveResult()">Save Test Result</button>
+        <div id="saveResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Test Get All Results</h3>
+        <button onclick="testGetAllResults()">Get All Results</button>
+        <div id="getAllResults"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Test Database Connection</h3>
+        <button onclick="testDatabaseConnection()">Test DB Connection</button>
+        <div id="dbConnection"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080/api/technical-test-results';
+        
+        async function testSaveResult() {
+            const testData = {
+                candidateEmail: 'test@example.com',
+                candidateName: 'Test User',
+                totalStats: {
+                    total: 20,
+                    answered: 18
+                },
+                sections: {
+                    'technical': {
+                        correct: 15,
+                        total: 20,
+                        percentage: 75.00
+                    }
+                },
+                timeTaken: 1650,
+                percentage: 75.00
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/save`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                const result = await response.json();
+                document.getElementById('saveResult').innerHTML = 
+                    `<div class="result ${response.ok ? 'success' : 'error'}">
+                        <strong>Status:</strong> ${response.status}<br>
+                        <strong>Response:</strong> <pre>${JSON.stringify(result, null, 2)}</pre>
+                    </div>`;
+            } catch (error) {
+                document.getElementById('saveResult').innerHTML = 
+                    `<div class="result error">
+                        <strong>Error:</strong> ${error.message}
+                    </div>`;
+            }
+        }
+        
+        async function testGetAllResults() {
+            try {
+                const response = await fetch(`${API_BASE}/all`);
+                const result = await response.json();
+                document.getElementById('getAllResults').innerHTML = 
+                    `<div class="result ${response.ok ? 'success' : 'error'}">
+                        <strong>Status:</strong> ${response.status}<br>
+                        <strong>Count:</strong> ${Array.isArray(result) ? result.length : 'Not an array'}<br>
+                        <strong>Response:</strong> <pre>${JSON.stringify(result, null, 2)}</pre>
+                    </div>`;
+            } catch (error) {
+                document.getElementById('getAllResults').innerHTML = 
+                    `<div class="result error">
+                        <strong>Error:</strong> ${error.message}
+                    </div>`;
+            }
+        }
+        
+        async function testDatabaseConnection() {
+            try {
+                const response = await fetch(`${API_BASE}/all`);
+                const result = await response.json();
+                
+                let message = 'Backend is reachable. ';
+                if (Array.isArray(result)) {
+                    message += `Found ${result.length} records in database.`;
+                } else {
+                    message += 'But response is not an array.';
+                }
+                
+                document.getElementById('dbConnection').innerHTML = 
+                    `<div class="result ${response.ok ? 'success' : 'error'}">
+                        <strong>Result:</strong> ${message}
+                    </div>`;
+            } catch (error) {
+                document.getElementById('dbConnection').innerHTML = 
+                    `<div class="result error">
+                        <strong>Cannot connect to backend:</strong> ${error.message}<br>
+                        <small>Make sure the backend is running on http://localhost:8080</small>
+                    </div>`;
+            }
+        }
+    </script>
+</body>
+</html>

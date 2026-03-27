@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Coding Questions API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Coding Questions API Test</h1>
+        <p>Testing backend API connectivity at: <strong>http://localhost:8080</strong></p>
+
+        <div class="test-section">
+            <h3>📊 Test 1: Get All Questions</h3>
+            <button onclick="testGetAllQuestions()">Test GET /api/coding-questions/all</button>
+            <div id="getAllResult"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📈 Test 2: Get Statistics</h3>
+            <button onclick="testGetStats()">Test GET /api/coding-questions/stats</button>
+            <div id="getStatsResult"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔍 Test 3: Check Backend Health</h3>
+            <button onclick="testBackendHealth()">Test Backend Connection</button>
+            <div id="healthResult"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📝 Test 4: Create Sample Question</h3>
+            <button onclick="testCreateQuestion()">Test POST /api/coding-questions/create</button>
+            <div id="createResult"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080';
+
+        async function testGetAllQuestions() {
+            const resultDiv = document.getElementById('getAllResult');
+            resultDiv.innerHTML = '<p>⏳ Testing...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/coding-questions/all`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Success!</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Questions found: ${data.length}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Error!</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Status Text: ${response.statusText}</p>
+                            <pre>${await response.text()}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Network Error!</h4>
+                        <p>Error: ${error.message}</p>
+                        <p>Make sure backend server is running on port 8080</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testGetStats() {
+            const resultDiv = document.getElementById('getStatsResult');
+            resultDiv.innerHTML = '<p>⏳ Testing...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/coding-questions/stats`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Success!</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Error!</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Status Text: ${response.statusText}</p>
+                            <pre>${await response.text()}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Network Error!</h4>
+                        <p>Error: ${error.message}</p>
+                        <p>Make sure backend server is running on port 8080</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testBackendHealth() {
+            const resultDiv = document.getElementById('healthResult');
+            resultDiv.innerHTML = '<p>⏳ Testing...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/coding-questions/options`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Backend is Running!</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>API is accessible and CORS is working</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Backend Not Responding!</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Status Text: ${response.statusText}</p>
+                            <pre>${await response.text()}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Backend Not Running!</h4>
+                        <p>Error: ${error.message}</p>
+                        <p>Please start the backend server:</p>
+                        <pre>cd src/backend && mvn spring-boot:run</pre>
+                    </div>
+                `;
+            }
+        }
+
+        async function testCreateQuestion() {
+            const resultDiv = document.getElementById('createResult');
+            resultDiv.innerHTML = '<p>⏳ Testing...</p>';
+            
+            const sampleQuestion = {
+                questionText: "Write a function that returns the sum of two numbers",
+                questionType: "ALGORITHM",
+                difficultyLevel: "EASY",
+                programmingLanguage: "JAVASCRIPT",
+                timeLimitMinutes: 15,
+                sampleInput: "2, 3",
+                expectedOutput: "5",
+                constraints: "Numbers should be integers",
+                hints: "Use simple addition",
+                solutionCode: "function sum(a, b) { return a + b; }",
+                testCases: '[{"input": "2,3", "output": "5"}, {"input": "10,20", "output": "30"}]',
+                points: 5,
+                isActive: true,
+                createdBy: "test"
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/coding-questions/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(sampleQuestion)
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Question Created!</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Question ID: ${data.id}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Failed to Create Question!</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Status Text: ${response.statusText}</p>
+                            <pre>${await response.text()}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Network Error!</h4>
+                        <p>Error: ${error.message}</p>
+                        <p>Make sure backend server is running on port 8080</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Auto-test backend health on page load
+        window.onload = function() {
+            testBackendHealth();
+        };
+    </script>
+</body>
+</html>

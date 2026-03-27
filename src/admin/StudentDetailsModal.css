@@ -1,0 +1,137 @@
+/* Student Details Modal Styles */
+.student-details-modal .modal-content {
+  background: linear-gradient(135deg, #091e3e 0%, #1a365d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.student-details-modal .modal-header {
+  background: linear-gradient(135deg, #F4780A 0%, #e56909 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-details-modal .modal-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.student-details-modal .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.student-modal-body {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+}
+
+.student-info-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.student-info-card .card-body {
+  padding: 1.5rem;
+}
+
+.detail-item {
+  margin-bottom: 1rem;
+}
+
+.detail-label {
+  display: block;
+  font-weight: 600;
+  color: #F4780A;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  display: block;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-value.skills-text {
+  white-space: pre-wrap;
+  line-height: 1.5;
+  min-height: 60px;
+}
+
+.student-details-modal .modal-footer {
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-details-modal .btn-primary {
+  background: linear-gradient(135deg, #F4780A 0%, #e56909 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+
+.student-details-modal .btn-primary:hover {
+  background: linear-gradient(135deg, #e56909 0%, #d45a08 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(244, 120, 10, 0.3);
+}
+
+.student-details-modal .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.student-details-modal .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.student-details-modal .btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.student-details-modal .btn-outline-danger:hover {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .student-details-modal .modal-dialog {
+    margin: 0.5rem;
+  }
+  
+  .student-modal-body {
+    padding: 1rem;
+  }
+  
+  .student-info-card .card-body {
+    padding: 1rem;
+  }
+  
+  .detail-value {
+    font-size: 0.9rem;
+  }
+  
+  .student-details-modal .modal-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .student-details-modal .modal-footer .btn {
+    width: 100%;
+  }
+}

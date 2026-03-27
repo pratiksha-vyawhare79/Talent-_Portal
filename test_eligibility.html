@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Coding Round Eligibility</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Coding Round Eligibility Test</h1>
+        <p>This page helps test and set up coding round eligibility for the application.</p>
+
+        <button onclick="checkCurrentEligibility()">🔍 Check Current Eligibility</button>
+        <button onclick="setTestEligibility()">✅ Set Test Eligibility</button>
+        <button onclick="clearEligibility()">🗑️ Clear Eligibility</button>
+        <button onclick="testCodingTestAccess()">🧪 Test Coding Test Access</button>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function checkCurrentEligibility() {
+            const resultsDiv = document.getElementById('results');
+            const eligibility = localStorage.getItem('codingRoundEligibility');
+            
+            if (!eligibility) {
+                resultsDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ No Eligibility Found</h3>
+                        <p>No coding round eligibility data found in localStorage.</p>
+                        <button onclick="setTestEligibility()">Set Test Eligibility</button>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const eligibilityData = JSON.parse(eligibility);
+                resultsDiv.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Eligibility Data Found</h3>
+                        <p><strong>Eligible for Coding Round:</strong> ${eligibilityData.eligibleForCodingRound ? 'Yes' : 'No'}</p>
+                        <p><strong>Technical Test Passed:</strong> ${eligibilityData.technicalTestPassed ? 'Yes' : 'No'}</p>
+                        <p><strong>Technical Test Score:</strong> ${eligibilityData.technicalTestScore || 'N/A'}</p>
+                        <p><strong>Technical Test Date:</strong> ${eligibilityData.technicalTestDate ? new Date(eligibilityData.technicalTestDate).toLocaleString() : 'N/A'}</p>
+                        <h4>Raw Data:</h4>
+                        <pre>${JSON.stringify(eligibilityData, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Invalid Eligibility Data</h3>
+                        <p>Eligibility data found but couldn't be parsed as JSON.</p>
+                        <p><strong>Raw Value:</strong> ${eligibility}</p>
+                        <button onclick="setTestEligibility()">Fix with Test Eligibility</button>
+                    </div>
+                `;
+            }
+        }
+
+        function setTestEligibility() {
+            const testUser = {
+                email: 'test@example.com',
+                firstName: 'Test',
+                lastName: 'User',
+                technicalTestPassed: true,
+                technicalTestScore: 85,
+                technicalTestDate: new Date().toISOString(),
+                eligibleForCodingRound: true
+            };
+
+            localStorage.setItem('codingRoundEligibility', JSON.stringify(testUser));
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="success">
+                    <h3>✅ Test Eligibility Set</h3>
+                    <p>Test eligibility data has been set in localStorage.</p>
+                    <p>You can now test access to the coding test page.</p>
+                    <h4>Test Data:</h4>
+                    <pre>${JSON.stringify(testUser, null, 2)}</pre>
+                    <button onclick="testCodingTestAccess()">Test Coding Test Access</button>
+                </div>
+            `;
+        }
+
+        function clearEligibility() {
+            localStorage.removeItem('codingRoundEligibility');
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="error">
+                    <h3>🗑️ Eligibility Cleared</h3>
+                    <p>Coding round eligibility data has been removed from localStorage.</p>
+                    <p>Now accessing the coding test should redirect to technical result.</p>
+                </div>
+            `;
+        }
+
+        function testCodingTestAccess() {
+            const eligibility = localStorage.getItem('codingRoundEligibility');
+            
+            if (!eligibility) {
+                alert('❌ No eligibility data found. Please set test eligibility first.');
+                return;
+            }
+
+            try {
+                const eligibilityData = JSON.parse(eligibility);
+                
+                if (!eligibilityData.eligibleForCodingRound) {
+                    alert('❌ Not eligible for coding round. The user should be redirected to technical result.');
+                    return;
+                }
+
+                alert('✅ Eligible for coding round! The user should be able to access the coding test page.');
+                console.log('Testing access to: http://localhost:5173/coding-test');
+                console.log('Expected: Should load coding test page');
+                console.log('Eligibility data:', eligibilityData);
+                
+                // You can uncomment this line to actually navigate
+                // window.location.href = 'http://localhost:5173/coding-test';
+                
+            } catch (error) {
+                alert('❌ Invalid eligibility data format. Please set test eligibility first.');
+            }
+        }
+
+        // Auto-check eligibility on page load
+        window.onload = function() {
+            checkCurrentEligibility();
+        };
+    </script>
+</body>
+</html>

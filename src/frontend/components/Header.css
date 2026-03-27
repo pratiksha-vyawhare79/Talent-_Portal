@@ -1,0 +1,60 @@
+/* Header Component Styles */
+.navbar-custom {
+  background: linear-gradient(135deg, #091e3e 0%, #1e3a5f 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.logo-custom {
+  width: 120px;
+  height: auto;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+.navbar-nav .nav-link {
+  color: #e2e8f0 !important;
+  font-weight: 500;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #F4780A !important;
+}
+
+.btn-enquire {
+  background: #F4780A !important;
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-enquire:hover {
+  background: #e56909 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(244, 120, 10, 0.3);
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+  
+  .logo-custom {
+    width: 32px;
+    height: 32px;
+  }
+}

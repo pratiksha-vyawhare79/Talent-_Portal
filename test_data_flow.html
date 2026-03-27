@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Data Flow - Technical Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        .result { margin: 10px 0; padding: 10px; background: #f5f5f5; }
+        .error { background: #ffe6e6; color: #cc0000; }
+        .success { background: #e6ffe6; color: #006600; }
+        pre { white-space: pre-wrap; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <h1>Test Technical Results Data Flow</h1>
+    
+    <div class="test-section">
+        <h3>1. Test Save with Exact Data Structure</h3>
+        <button onclick="testExactDataStructure()">Save Exact Structure</button>
+        <div id="exactStructure"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Check Database After Save</h3>
+        <button onclick="checkDatabase()">Check Database</button>
+        <div id="checkDb"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Test Get All Results</h3>
+        <button onclick="testGetAll()">Get All Results</button>
+        <div id="getAll"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080/api/technical-test-results';
+        
+        // Test data that matches exactly what TechnicalResult.jsx sends
+        const exactTestData = {
+            candidateEmail: 'test.user@example.com',
+            candidateName: 'Test User',
+            totalQuestions: 20,
+            totalCorrect: 15,
+            totalAnswered: 18,
+            percentageScore: 75.00,
+            timeTakenSeconds: 1650,
+            passed: true,
+            sectionData: '{"technical":{"sectionKey":"technical","sectionTitle":"Technical Assessment","total":20,"correct":15,"percentage":75.00}}',
+            technicalSectionScore: 15,
+            technicalSectionTotal: 20,
+            technicalSectionPercentage: 75.00
+        };
+        
+        async function testExactDataStructure() {
+            try {
+                console.log('Sending exact test data:', exactTestData);
+                
+                const response = await fetch(`${API_BASE}/save`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(exactTestData)
+                });
+                
+                const result = await response.json();
+                document.getElementById('exactStructure').innerHTML = 
+                    `<div class="result ${response.ok ? 'success' : 'error'}">
+                        <strong>Status:</strong> ${response.status}<br>
+                        <strong>Success:</strong> ${result.success}<br>
+                        <strong>Message:</strong> ${result.message}<br>
+                        <strong>Result ID:</strong> ${result.resultId}<br>
+                        <strong>Passed:</strong> ${result.passed}<br>
+                        <strong>Percentage:</strong> ${result.percentage}<br>
+                        <strong>Full Response:</strong> <pre>${JSON.stringify(result, null, 2)}</pre>
+                    </div>`;
+                    
+                // Auto-check database after successful save
+                if (result.success) {
+                    setTimeout(checkDatabase, 1000);
+                }
+            } catch (error) {
+                document.getElementById('exactStructure').innerHTML = 
+                    `<div class="result error">
+                        <strong>Error:</strong> ${error.message}
+                    </div>`;
+            }
+        }
+        
+        async function checkDatabase() {
+            try {
+                const response = await fetch(`${API_BASE}/all`);
+                const results = await response.json();
+                
+                let html = `<div class="result ${response.ok ? 'success' : 'error'}">`;
+                html += `<strong>Total Records:</strong> ${results.length}<br><br>`;
+                
+                // Show last 3 records
+                const recentRecords = results.slice(-3).reverse();
+                recentRecords.forEach((record, index) => {
+                    html += `<strong>Record ${index + 1}:</strong><br>`;
+                    html += `ID: ${record.id}<br>`;
+                    html += `Email: ${record.candidateEmail}<br>`;
+                    html += `Name: ${record.candidateName}<br>`;
+                    html += `Questions: ${record.totalQuestions}<br>`;
+                    html += `Correct: ${record.totalCorrect}<br>`;
+                    html += `Percentage: ${record.percentageScore}%<br>`;
+                    html += `Passed: ${record.passed}<br>`;
+                    html += `Test Date: ${record.testDate}<br>`;
+                    html += `Submitted: ${record.submittedAt}<br><br>`;
+                });
+                
+                html += `</div>`;
+                document.getElementById('checkDb').innerHTML = html;
+            } catch (error) {
+                document.getElementById('checkDb').innerHTML = 
+                    `<div class="result error">
+                        <strong>Error checking database:</strong> ${error.message}
+                    </div>`;
+            }
+        }
+        
+        async function testGetAll() {
+            try {
+                const response = await fetch(`${API_BASE}/all`);
+                const results = await response.json();
+                
+                document.getElementById('getAll').innerHTML = 
+                    `<div class="result ${response.ok ? 'success' : 'error'}">
+                        <strong>Status:</strong> ${response.status}<br>
+                        <strong>Count:</strong> ${results.length}<br>
+                        <strong>Data Type:</strong> ${Array.isArray(results) ? 'Array' : typeof results}<br>
+                        <strong>First Record:</strong> <pre>${JSON.stringify(results[0] || 'No records', null, 2)}</pre>
+                    </div>`;
+            } catch (error) {
+                document.getElementById('getAll').innerHTML = 
+                    `<div class="result error">
+                        <strong>Error:</strong> ${error.message}
+                    </div>`;
+            }
+        }
+    </script>
+</body>
+</html>

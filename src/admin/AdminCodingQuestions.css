@@ -1,0 +1,64 @@
+/* Admin Coding Questions - Align with dashboard look */
+.admin-coding-questions {
+  padding: 0;
+  background: transparent;
+}
+
+.stat-icon {
+  font-size: 2rem;
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stat-label {
+  color: #94a3b8;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.question-text {
+  max-width: 420px;
+}
+
+.question-content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  color: #000000;
+  font-weight: 500;
+}
+
+.id-text {
+  color: #000000;
+  font-weight: 500;
+}
+
+.language-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.table-responsive {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+}

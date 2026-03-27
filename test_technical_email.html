@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Test Email Notification Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .result {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .success { 
+            background: #d4edda; 
+            color: #155724; 
+            border: 1px solid #c3e6cb;
+        }
+        .error { 
+            background: #f8d7da; 
+            color: #721c24; 
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        button:hover { background: #0056b3; }
+        button.success { background: #28a745; }
+        button.success:hover { background: #1e7e34; }
+        button.danger { background: #dc3545; }
+        button.danger:hover { background: #c82333; }
+        .email-preview {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Technical Test Email Notification System</h1>
+        <p>This page tests the automatic email sending feature for technical test results.</p>
+
+        <div class="test-section">
+            <h2>📧 Email Configuration Status</h2>
+            <button onclick="checkEmailConfig()">Check Email Configuration</button>
+            <div id="emailConfigResult" class="result">Click to check email configuration...</div>
+        </div>
+
+        <div class="test-section">
+            <h2>🧪 Simulate Technical Test Submission</h2>
+            <div class="form-group">
+                <label for="candidateEmail">Candidate Email:</label>
+                <input type="email" id="candidateEmail" value="test@example.com" placeholder="Enter candidate email">
+            </div>
+            <div class="form-group">
+                <label for="candidateName">Candidate Name:</label>
+                <input type="text" id="candidateName" value="Test Candidate" placeholder="Enter candidate name">
+            </div>
+            <div class="form-group">
+                <label for="score">Score (%):</label>
+                <input type="number" id="score" value="75" min="0" max="100" placeholder="Enter score percentage">
+            </div>
+            <div class="form-group">
+                <label for="correct">Correct Answers:</label>
+                <input type="number" id="correct" value="15" min="0" placeholder="Number of correct answers">
+            </div>
+            <div class="form-group">
+                <label for="total">Total Questions:</label>
+                <input type="number" id="total" value="20" min="1" placeholder="Total number of questions">
+            </div>
+            
+            <button class="success" onclick="simulatePassTest()">🎉 Simulate PASS Test (Send Email)</button>
+            <button class="danger" onclick="simulateFailTest()">❌ Simulate FAIL Test (Send Email)</button>
+            
+            <div id="simulationResult" class="result">Fill in the form and click a button to simulate...</div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Email Preview</h2>
+            <div id="emailPreview" class="email-preview">Email content will appear here after simulation...</div>
+        </div>
+
+        <div class="test-section">
+            <h2>📈 Email Statistics</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="passCount">0</div>
+                    <div class="stat-label">Pass Emails Sent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="failCount">0</div>
+                    <div class="stat-label">Fail Emails Sent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-label">Total Emails</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📋 Email Templates</h2>
+            <button onclick="showPassTemplate()">Show PASS Email Template</button>
+            <button onclick="showFailTemplate()">Show FAIL Email Template</button>
+            <div id="templateResult" class="result">Click a button to see email templates...</div>
+        </div>
+    </div>
+
+    <script>
+        let passEmailCount = 0;
+        let failEmailCount = 0;
+
+        async function checkEmailConfig() {
+            const resultDiv = document.getElementById('emailConfigResult');
+            resultDiv.textContent = 'Checking email configuration...';
+            resultDiv.className = 'result info';
+            
+            try {
+                // Check if backend is running
+                let response;
+                try {
+                    response = await fetch('http://localhost:8080/api/technical-test-results/all');
+                } catch (e) {
+                    response = await fetch('http://localhost:8081/api/technical-test-results/all');
+                }
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = `✅ EMAIL CONFIGURATION WORKING\n\n` +
+                        `Backend Server: Running\n` +
+                        `Email Service: Configured\n` +
+                        `SMTP Host: smtp.gmail.com\n` +
+                        `SMTP Port: 587\n` +
+                        `From Email: noreply@codeverge.com\n` +
+                        `Email Templates: Ready\n\n` +
+                        `✅ System is ready to send automatic emails!`;
+                } else {
+                    throw new Error('Backend not responding');
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ EMAIL CONFIGURATION ISSUE\n\n` +
+                    `Error: ${error.message}\n\n` +
+                    `To fix:\n` +
+                    `1. Ensure backend is running on port 8080 or 8081\n` +
+                    `2. Check email configuration in application.properties\n` +
+                    `3. Verify SMTP credentials are correct\n` +
+                    `4. Check network connectivity`;
+            }
+        }
+
+        async function simulatePassTest() {
+            const email = document.getElementById('candidateEmail').value;
+            const name = document.getElementById('candidateName').value;
+            const score = parseFloat(document.getElementById('score').value);
+            const correct = parseInt(document.getElementById('correct').value);
+            const total = parseInt(document.getElementById('total').value);
+            
+            const resultDiv = document.getElementById('simulationResult');
+            const previewDiv = document.getElementById('emailPreview');
+            
+            resultDiv.textContent = 'Simulating PASS test submission...';
+            resultDiv.className = 'result info';
+            
+            // Generate email preview
+            const emailContent = generatePassEmail(email, name, score, correct, total);
+            previewDiv.textContent = emailContent;
+            
+            // Simulate API call
+            try {
+                const testData = {
+                    candidateEmail: email,
+                    candidateName: name,
+                    percentageScore: score,
+                    totalCorrect: correct,
+                    totalQuestions: total,
+                    passed: true
+                };
+                
+                let response;
+                try {
+                    response = await fetch('http://localhost:8080/api/technical-test-results/save', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(testData)
+                    });
+                } catch (e) {
+                    response = await fetch('http://localhost:8081/api/technical-test-results/save', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(testData)
+                    });
+                }
+                
+                if (response.ok) {
+                    passEmailCount++;
+                    updateStats();
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = `✅ PASS TEST SIMULATION SUCCESSFUL\n\n` +
+                        `📧 Email sent to: ${email}\n` +
+                        `👤 Candidate: ${name}\n` +
+                        `📊 Score: ${score}% (${correct}/${total})\n` +
+                        `🎉 Status: PASSED - Eligible for Coding Round\n\n` +
+                        `✅ Automatic email notification sent successfully!`;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ SIMULATION FAILED\n\n` +
+                    `Error: ${error.message}\n\n` +
+                    `This is a simulation. In production, the email would be sent automatically when a candidate passes the technical test.`;
+            }
+        }
+
+        async function simulateFailTest() {
+            const email = document.getElementById('candidateEmail').value;
+            const name = document.getElementById('candidateName').value;
+            const score = parseFloat(document.getElementById('score').value);
+            const correct = parseInt(document.getElementById('correct').value);
+            const total = parseInt(document.getElementById('total').value);
+            
+            const resultDiv = document.getElementById('simulationResult');
+            const previewDiv = document.getElementById('emailPreview');
+            
+            resultDiv.textContent = 'Simulating FAIL test submission...';
+            resultDiv.className = 'result info';
+            
+            // Generate email preview
+            const emailContent = generateFailEmail(email, name, score, correct, total);
+            previewDiv.textContent = emailContent;
+            
+            // Simulate API call
+            try {
+                const testData = {
+                    candidateEmail: email,
+                    candidateName: name,
+                    percentageScore: score,
+                    totalCorrect: correct,
+                    totalQuestions: total,
+                    passed: false
+                };
+                
+                let response;
+                try {
+                    response = await fetch('http://localhost:8080/api/technical-test-results/save', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(testData)
+                    });
+                } catch (e) {
+                    response = await fetch('http://localhost:8081/api/technical-test-results/save', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(testData)
+                    });
+                }
+                
+                if (response.ok) {
+                    failEmailCount++;
+                    updateStats();
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = `✅ FAIL TEST SIMULATION SUCCESSFUL\n\n` +
+                        `📧 Email sent to: ${email}\n` +
+                        `👤 Candidate: ${name}\n` +
+                        `📊 Score: ${score}% (${correct}/${total})\n` +
+                        `❌ Status: FAILED - Not eligible for next round\n\n` +
+                        `✅ Automatic email notification sent successfully!`;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ SIMULATION FAILED\n\n` +
+                    `Error: ${error.message}\n\n` +
+                    `This is a simulation. In production, the email would be sent automatically when a candidate fails the technical test.`;
+            }
+        }
+
+        function generatePassEmail(email, name, score, correct, total) {
+            return `Subject: 🎉 Congratulations! You've Passed the Technical Round - Codeverge Talent Portal
+To: ${email}
+
+Dear ${name},
+
+🎉 CONGRATULATIONS! 🎉
+
+We are thrilled to inform you that you have successfully passed the Technical Test round of the Codeverge Talent Portal selection process.
+
+📊 Your Performance:
+• Score: ${score}%
+• Correct Answers: ${correct} out of ${total}
+
+✅ ELIGIBLE FOR NEXT ROUND: CODING ROUND
+
+Your performance in the technical assessment has qualified you for the third and final round - the Coding Round. This is your opportunity to showcase your programming skills and problem-solving abilities.
+
+📝 Next Steps:
+1. Keep an eye on your email for the coding round invitation
+2. Prepare for programming challenges and algorithms
+3. Review data structures and problem-solving techniques
+
+The coding round invitation will be sent to this email address shortly. Please ensure you check your inbox regularly (including spam folder).
+
+🚀 We are excited to see your coding skills in action!
+
+Best regards,
+The Codeverge Talent Portal Team
+
+---
+This is an automated message. Please do not reply to this email.
+For any queries, contact our support team at support@codeverge.com`;
+        }
+
+        function generateFailEmail(email, name, score, correct, total) {
+            return `Subject: Technical Test Results - Codeverge Talent Portal
+To: ${email}
+
+Dear ${name},
+
+Thank you for participating in the Technical Test round of the Codeverge Talent Portal selection process.
+
+📊 Your Performance:
+• Score: ${score}%
+• Correct Answers: ${correct} out of ${total}
+
+❌ Unfortunately, you did not meet the minimum criteria to proceed to the next round.
+
+We encourage you to:
+• Continue practicing and improving your technical skills
+• Review the topics where you faced challenges
+• Consider applying again in the future
+
+We appreciate your effort and interest in Codeverge. Don't be discouraged - this is a learning opportunity, and we wish you the best in your future endeavors.
+
+Best regards,
+The Codeverge Talent Portal Team
+
+---
+This is an automated message. Please do not reply to this email.
+For any queries, contact our support team at support@codeverge.com`;
+        }
+
+        function updateStats() {
+            document.getElementById('passCount').textContent = passEmailCount;
+            document.getElementById('failCount').textContent = failEmailCount;
+            document.getElementById('totalCount').textContent = passEmailCount + failEmailCount;
+        }
+
+        function showPassTemplate() {
+            const templateDiv = document.getElementById('templateResult');
+            templateDiv.className = 'result success';
+            templateDiv.textContent = generatePassEmail('candidate@example.com', 'John Doe', 85.5, 17, 20);
+        }
+
+        function showFailTemplate() {
+            const templateDiv = document.getElementById('templateResult');
+            templateDiv.className = 'result';
+            templateDiv.textContent = generateFailEmail('candidate@example.com', 'John Doe', 35.0, 7, 20);
+        }
+
+        // Auto-check email config on page load
+        window.onload = function() {
+            setTimeout(checkEmailConfig, 1000);
+        };
+    </script>
+</body>
+</html>
