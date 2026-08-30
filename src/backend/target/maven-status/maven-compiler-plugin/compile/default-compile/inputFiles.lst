@@ -1,52 +1,52 @@
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\OTPService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\repository\CodingReviewRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\StudentService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\AptitudeQuestionRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\AdminService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\AptitudeQuestionService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\TechnicalTestResultRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\CodingQuestionRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\TechnicalTestResultService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\CodingReviewController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\CodingQuestionService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\AptitudeQuestionController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\TechnicalQuestionController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\CodingResultsController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\AuthController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\CodingReviewService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\CandidateResultService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\util\JwtUtil.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\config\DatabaseInitializer.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\repository\CodingResultRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\config\DataInitializationConfig.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\TechnicalTestResultController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\entity\AptitudeQuestion.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\config\SecurityConfig.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\CandidateResultRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\util\PasswordUtil.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\AdminRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\dto\OTPRequest.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\AdminController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\StudentRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\entity\CodingResult.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\dto\OTPVerificationRequest.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\model\CodingQuestion.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\entity\CodingReview.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\TechnicalQuestionRepository.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\config\AptitudeSchemaCompatibilityConfig.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\entity\CandidateResult.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\entity\Admin.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\entity\OTPCode.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\entity\Student.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\model\TechnicalTestResult.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\config\StudentSchemaCompatibilityConfig.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\TechnicalQuestionService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\TalentPortalApplication.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\StudentController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\exception\GlobalExceptionHandler.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\CodingQuestionController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\service\CodingResultService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\controller\CandidateResultController.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\service\EmailService.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\entity\TechnicalQuestion.java
-C:\Workspace\Talent_Portal\src\backend\src\main\java\com\codeverge\talentportal\repository\OTPRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\entity\Admin.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\CandidateResultController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\config\StudentSchemaCompatibilityConfig.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\StudentRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\TechnicalQuestionController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\TechnicalTestResultController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\config\SecurityConfig.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\dto\OTPVerificationRequest.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\AdminService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\CodingReviewService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\config\DataInitializationConfig.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\TechnicalTestResultService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\repository\CodingReviewRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\config\DatabaseInitializer.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\CodingQuestionController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\AdminRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\StudentController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\exception\GlobalExceptionHandler.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\model\CodingQuestion.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\entity\TechnicalQuestion.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\TechnicalQuestionService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\AdminController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\CodingReviewController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\CandidateResultRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\OTPService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\OTPRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\StudentService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\service\CodingResultService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\config\AptitudeSchemaCompatibilityConfig.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\entity\CodingReview.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\TalentPortalApplication.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\AptitudeQuestionController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\AptitudeQuestionService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\repository\CodingResultRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\EmailService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\CodingQuestionService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\entity\AptitudeQuestion.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\entity\CodingResult.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\CodingResultsController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\entity\Student.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\controller\AuthController.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\util\PasswordUtil.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\entity\OTPCode.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\TechnicalTestResultRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\entity\CandidateResult.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\dto\OTPRequest.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\TechnicalQuestionRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\util\JwtUtil.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\model\TechnicalTestResult.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\AptitudeQuestionRepository.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\service\CandidateResultService.java
+C:\Users\Lenovo\Downloads\Talent_Portal-main (2)\Talent_Portal-main\src\backend\src\main\java\com\codeverge\talentportal\repository\CodingQuestionRepository.java

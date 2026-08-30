@@ -28,10 +28,61 @@ public class DatabaseInitializer implements CommandLineRunner {
             // Insert default email templates
             insertEmailTemplates();
             
+            // Initialize default admin user
+            initializeAdminUser();
+            
             System.out.println("✅ Database tables created successfully!");
             
         } catch (Exception e) {
             System.err.println("❌ Error creating database tables: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void initializeAdminUser() {
+        try {
+            // Check if admins table exists
+            String checkTableSql = "SHOW TABLES LIKE 'admins'";
+            java.util.List<String> tables = jdbcTemplate.query(checkTableSql, (rs, rowNum) -> rs.getString(1));
+            
+            if (tables.isEmpty()) {
+                String createTableSql = """
+                    CREATE TABLE IF NOT EXISTS admins (
+                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                        email VARCHAR(255) NOT NULL UNIQUE,
+                        password VARCHAR(255) NOT NULL,
+                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        last_login TIMESTAMP NULL
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                """;
+                jdbcTemplate.execute(createTableSql);
+                System.out.println("✅ admins table created manually");
+            }
+            
+            // Check if default admin exists
+            String checkAdminSql = "SELECT COUNT(*) FROM admins WHERE email = 'admincodeverge@gmail.com'";
+            Integer count = jdbcTemplate.queryForObject(checkAdminSql, Integer.class);
+            
+            if (count == null || count == 0) {
+                // Insert default admin: email 'admincodeverge@gmail.com', password 'Admin@123' (will be automatically migrated to BCrypt on first login)
+                String insertAdminSql = """
+                    INSERT INTO admins (email, password) 
+                    VALUES ('admincodeverge@gmail.com', 'Admin@123')
+                """;
+                jdbcTemplate.update(insertAdminSql);
+                System.out.println("✅ Default admin user created successfully!");
+            } else {
+                // Update to plaintext 'Admin@123' to guarantee migration if previous hash was incorrect
+                String updateAdminSql = """
+                    UPDATE admins 
+                    SET password = 'Admin@123' 
+                    WHERE email = 'admincodeverge@gmail.com'
+                """;
+                jdbcTemplate.update(updateAdminSql);
+                System.out.println("✅ Reset default admin password to plaintext 'Admin@123' for correct BCrypt encoding");
+            }
+        } catch (Exception e) {
+            System.err.println("❌ Error initializing admin user: " + e.getMessage());
             e.printStackTrace();
         }
     }
